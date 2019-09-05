@@ -12,16 +12,20 @@ namespace SportsStore.Controllers
     public class ProductController : Controller {
         private IProductRepository repository;
         private int PageSize = 4;
-        public ViewResult List(int productPage = 1) => View(new ProductsListViewModel {
+        public ViewResult List(string category, int productPage = 1) => View(new ProductsListViewModel {
             Products = repository.Products
+            .Where(p => category == null ||  p.Category == category)
             .OrderBy(p => p.ProductID)
             .Skip((productPage - 1) * PageSize)
             .Take(PageSize),
             PagingInfo = new PagingInfo {
                 CurrentPage = productPage,
                 ItemsPerPage = PageSize,
-                TotalItems = repository.Products.Count()
-            }
+                TotalItems = category == null ?
+                    repository.Products.Count() : 
+                    repository.Products.Where(e=> e.Category == category).Count()
+            },
+            CurrentCategory = category
         });
 
         public ProductController(IProductRepository repo) {
