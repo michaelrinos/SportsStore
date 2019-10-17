@@ -51,7 +51,7 @@ namespace SportsStore {
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
             app.UseSession();
             app.UseMvc(routes => {
                 routes.MapRoute(
