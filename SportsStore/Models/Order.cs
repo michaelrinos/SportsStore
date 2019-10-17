@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SportsStore.Models {
-    public class Orders {
+    public class Order {
         [BindNever]
         public int OrderID { get; set; }
         [BindNever]
