@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Moq;
+using SportsStore.Controllers;
+using SportsStore.Models;
 using Xunit;
-
 
 namespace SportsStore.Tests {
     public class ProductControllerTests {
         [Fact]
         public void Can_Paginate() {
-
-            /*
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns((new Product[] {
@@ -22,6 +21,7 @@ namespace SportsStore.Tests {
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Act
+            /*
             IEnumerable<Product> result =
             controller.List(2).ViewData.Model as IEnumerable<Product>;
             // Assert
